@@ -115,10 +115,29 @@ class DoubleLinkedlist:
         for data in data_list:
             self.insert_at_end(data)
 
+    def get_value_index(self, index):
+        if self.head is None:
+            raise Exception('Empty list can\'t be indexed')
+
+        if index < 0 or index >= self.get_length():
+            raise Exception('Index out of range')
+        count = 0
+        itr = self.head
+        while itr:
+            if count == index:
+                val = itr.data
+                break
+            itr = itr.next
+            count+=1
+        return val
 
 
-# l1 = DoubleLinkedlist()
-# l1.insert_values([1, 2, 3, 4])
+
+
+
+
+l1 = DoubleLinkedlist()
+l1.insert_values([1, 2, 3, 4])
 # l1.print_backward()
 # l1.remove_by_value(3)
-# l1.print_list()
+print(l1.get_value_index(3))
